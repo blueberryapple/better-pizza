@@ -13,7 +13,6 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         host: 'localhost',
-        //contentBase: './assets/bundles/',
         port: 3000,
         hot: true,
         headers: { 'Access-Control-Allow-Origin': '*' },
@@ -23,13 +22,17 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CleanWebpackPlugin(['./assets/bundles']),
-        new BundleTracker({ filename: './webpack-stats.json' })
+        new BundleTracker({ filename: './webpack-stats.json' }) // stats json is needed to direct django to assets
     ],
     module: {
-        loaders: [{ // to transform JSX into JS
+        rules: [{ // to transform JSX into JS
             test: /\.jsx?$/,
             exclude: /node_modules/,
             use: 'babel-loader'
+        },
+        {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader']
         }],
     },
     output: {
