@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login/set2.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'login/login.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+<span class="input input--chisato">
+  <input type="text" name="username" id="user" class="input__field input__field--chisato" required autofocus />
+  <label for="user" class="input__label input__label--chisato">
+    <span class="input__label-content input__label-content--chisato" data-content="username">username</span>
+  </label>
+</span>
+
+<span class="input input--chisato">
+  <input type="password" id="pass" name="password" class="input__field input__field--chisato" required />
+  <label for="pass" class="input__label input__label--chisato">
+    <span class="input__label-content input__label-content--chisato" data-content="pass">pass</label>
+  </label>
+</span>
+
+<input type="submit" value="login" id="submit" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+<script src="{% static 'login/input.js' %}"></script>

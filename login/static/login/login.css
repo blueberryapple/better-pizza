@@ -1,0 +1,32 @@
+body {
+  background-color: black;
+  font-size: 1.05em;
+  font-weight: 500;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+.input {
+  display: flex;
+}
+
+.input__label {
+  padding-bottom: 10px;
+}
+
+#submit {
+  margin: 21px;
+  padding: 10px;
+  background-color: transparent;
+  color: #b5b5b5;
+  border-radius: 5px;
+  border-color: #b5b5b5;
+  border-width: 2px;
+  border-style: solid;
+}
+
+#submit:hover {
+  color: #da6484;
+  border-color: #da6484#da6484;
+  cursor: pointer;
+}
