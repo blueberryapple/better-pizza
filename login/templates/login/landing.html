@@ -1,5 +1,10 @@
-<h2>Logged in as {{ user.username }}<h2>
+{% load render_bundle from webpack_loader %}
+
+<h2>Logged in as {{ user.username }}</h2>
+
+<div id="app"></div>
+{% render_bundle 'main' %}
 
 <form action="{% url 'logout' %}">
-  <button>logout</button>
+    <button>logout</button>
 </form>

@@ -34,10 +34,23 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# webpack
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'assets'), # We do this so that django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
+}
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'webpack_loader',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -47,7 +60,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# cors config
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000'
+)
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -115,7 +134,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Los_Angeles'
 
 USE_I18N = True
 
