@@ -2,6 +2,6 @@ dbcred.json
 secretkey
 login/migrations
 node_modules
-yarn*
+yarn-error.log
 */__pycache__
 webpack-stats.json
