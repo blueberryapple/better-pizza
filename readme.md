@@ -16,5 +16,9 @@ Finding the class resources and syllabus is also a hassle. Obviously, every clas
 
 There are more issues to solve but those are just from the top of my head.
 
+## Progress Screenshots
+### Login and landing page with react
+![login](assets/img/login.gif?raw=true "Login shot")
+
 ## Contributing
 Currently you need a sceret key for django in a `secretkey` file and your mysql credentials in `dbcred.json`. And put it in the root directory.
