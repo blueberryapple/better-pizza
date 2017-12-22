@@ -1,7 +1,25 @@
 import React from 'react'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Classes from './Classes.jsx'
+import Posts from './Posts.jsx'
 
-export default function App(){
+const routes = [
+    {
+        path: '/forum',
+        component: Classes
+    },
+    {
+        path: '/forum/:cl',
+        component: Posts
+    },
+]
+
+export default function App() {
     return (
-        <h2>django react webpack!</h2>
+        <BrowserRouter>
+            <Switch>
+                {routes.map((route) => <Route exact key={route.path} {...route} />)}
+            </Switch>
+        </BrowserRouter>
     )
 }
