@@ -32,6 +32,9 @@ with open('secretkey') as secret:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+LOGIN_REDIRECT_URL = '/forum'
+LOGIN_URL = '/login'
+
 ALLOWED_HOSTS = []
 
 # webpack
@@ -47,10 +50,10 @@ WEBPACK_LOADER = {
 }
 
 # Application definition
-
 INSTALLED_APPS = [
     'corsheaders',
     'webpack_loader',
+    'forum',
     'login',
     'django.contrib.admin',
     'django.contrib.auth',
