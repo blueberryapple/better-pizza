@@ -2,6 +2,7 @@ const path = require("path")
 const webpack = require('webpack')
 const BundleTracker = require('webpack-bundle-tracker')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
     entry: [
@@ -22,7 +23,8 @@ module.exports = {
         new webpack.NamedModulesPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CleanWebpackPlugin(['./assets/bundles']),
-        new BundleTracker({ filename: './webpack-stats.json' }) // stats json is needed to direct django to assets
+        new BundleTracker({ filename: './webpack-stats.json' }), // stats json is needed to direct django to assets
+        new ExtractTextPlugin('styles.css')
     ],
     module: {
         rules: [{ // to transform JSX into JS
@@ -32,7 +34,10 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader']
+            use: ExtractTextPlugin.extract({
+                fallback: 'style-loader',
+                use: 'css-loader'
+            })
         }],
     },
     output: {
