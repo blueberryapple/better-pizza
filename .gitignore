@@ -1,6 +1,6 @@
 dbcred.json
 secretkey
-login/migrations
+*/migrations
 node_modules
 yarn-error.log
 */__pycache__
