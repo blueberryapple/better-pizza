@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Classes from './Classes.jsx'
-import Posts from './Posts.jsx'
+import Classes from './Classes/Classes.jsx'
+import Posts from './Posts/Posts.jsx'
 
 const routes = [
     {
@@ -15,10 +15,14 @@ const routes = [
 ]
 
 export default function App() {
+    const routeList = routes.map((route) => {
+        return <Route exact key={route.path} {...route} />
+    })
+
     return (
         <BrowserRouter>
             <Switch>
-                {routes.map((route) => <Route exact key={route.path} {...route} />)}
+                { routeList }
             </Switch>
         </BrowserRouter>
     )
