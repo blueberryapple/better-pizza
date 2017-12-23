@@ -1,5 +1,5 @@
 import React from 'react'
-import getPosts from '../mockApis/getPosts'
+import { getPosts } from '../mockApi'
 import css from './post.css'
 
 export default function Posts({ match }) {
