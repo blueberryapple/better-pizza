@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import getClasses from '../mockApis/getClasses'
+import { getClasses } from '../mockApi'
 
 export default function Classes(){
     const classes = getClasses().map((cl) => {
