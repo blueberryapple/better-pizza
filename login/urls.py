@@ -6,6 +6,5 @@ urlpatterns = [
     re_path(r'^$', LoginView.as_view(
         template_name='login/index.html'
     ), name='login'),
-    re_path(r'^landing', views.landing, name='land'),
     re_path(r'^logout', views.logout, name='logout'),
 ]
