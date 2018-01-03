@@ -8,4 +8,4 @@ def forum(request):
     return render(request, 'forum/forum.html')
 
 def logout(request):
-    return logout_then_login(request, login_url='/login')
+    return logout_then_login(request)
