@@ -1,20 +1,18 @@
-import React from 'react'
+import React, { createElement} from 'react'
+import Post from './Post/Postcard.jsx'
 import { getPosts } from '../mockApi'
-import css from './post.css'
+import css from './posts.css'
+import katexCss from 'katex/dist/katex.css'
 
 export default function Posts({ match }) {
-    const posts = getPosts().map((post) => {
-        return (
-            <div key={post.id} className='post'>
-                <p>{ post.title }</p>
-                <p>{ post.body }</p>
-            </div>
-        )
-    })
+    const posts = getPosts().map((post) => <Post {...post} key={post.id} />)
 
     return (
-        <div>
+        <div className="forum">
             <h2>{ match.params.cl }</h2>
+            <div className="search-container">
+                <input type="text" label="search here!" id="search" />
+            </div>
             { posts }
         </div>
     )

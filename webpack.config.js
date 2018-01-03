@@ -24,7 +24,7 @@ module.exports = {
         new webpack.NoEmitOnErrorsPlugin(),
         new CleanWebpackPlugin(['./assets/bundles']),
         new BundleTracker({ filename: './webpack-stats.json' }), // stats json is needed to direct django to assets
-        new ExtractTextPlugin('styles.css')
+        //new ExtractTextPlugin('styles.css')
     ],
     module: {
         rules: [{ // to transform JSX into JS
@@ -34,10 +34,22 @@ module.exports = {
         },
         {
             test: /\.css$/,
-            use: ExtractTextPlugin.extract({
+            use: ['style-loader', 'css-loader']
+            /* makes css bundle, but no hmr
+            ExtractTextPlugin.extract({
                 fallback: 'style-loader',
                 use: 'css-loader'
             })
+            */
+        },
+        { // load fonts
+            test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+            use: [{
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]'
+                }
+            }]
         }],
     },
     output: {

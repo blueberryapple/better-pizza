@@ -10,7 +10,7 @@ export function getPosts() {
     return [
         {
             title: 'where is syllabus',
-            body: 'title',
+            body: 'title $\\int_a^c \\exp(x^2)$',
             id: '24',
         },
         {
